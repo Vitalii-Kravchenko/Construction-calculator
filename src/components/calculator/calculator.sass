@@ -1,0 +1,36 @@
+.calculator
+  margin-top: 60px
+  &-content
+    display: flex
+    justify-content: space-between
+  &-tabs
+    position: relative
+    display: flex
+    align-items: center
+    &__item
+      padding: 12px 16px 16px 16px
+      width: 100%
+      max-width: 240px
+      text-align: center
+      +h(18px)
+      color: $text-color
+      font-weight: bold
+      background-color: rgba(6, 6, 6, 0.35)
+      transition: background-color 0.3s ease
+      &:hover
+        background-color: rgba(6, 6, 6, 0.1)
+    &__line
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      max-width: 240px
+      height: 2px
+      background-color: $accent-color
+      opacity: 0
+      transition: opacity 0.3s ease
+      &--active
+        opacity: 1
+  &__button
+    &-login
+      margin-top: 50px

@@ -1,0 +1,70 @@
+.room-area
+  margin-right: 30px
+  padding: 50px
+  display: flex
+  flex-direction: column
+  max-width: 1000px
+  width: 100%
+  +card-shadow
+  &__input
+    display: flex
+    width: 100%
+    max-width: 405px
+    &-label
+      margin: 0 20px 0 0
+      align-self: center
+      width: 100%
+      max-width: 288px
+      +h(18px)
+      color: $text-color
+    &-wrapper
+      display: flex
+      align-items: center
+      width: 100%
+      max-width: 100px
+    &-item
+      margin-right: 8px
+      width: 66px
+      text-align: center
+      +h(18px)
+      font-weight: bold
+      color: $text-color
+      border-bottom: 1px solid #fff
+      transition: border-bottom-color 0.3s ease
+      &::placeholder
+        color: rgba(255, 254, 254, 0.5)
+      &:invalid
+        border-bottom-color: $accent-color
+      &:focus-visible
+        border-bottom-color: #ffff00
+        &:invalid
+          border-bottom-color: $accent-color
+    &-text
+      +h(18px)
+      font-weight: bold
+      color: $text-color
+  &__title
+    &-item
+      position: relative
+      margin: 35px 0 0 0
+      display: inline-block
+      +h(24px)
+      font-weight: bold
+      color: $text-color
+      &::after
+        content: ''
+        position: absolute
+        bottom: 1px
+        left: 0
+        width: 100%
+        height: 1px
+        background-color: #fff
+  &__content
+    margin: 40px 0
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    & > .room-area__input:nth-child(2n+1)
+      margin-right: 20px
+    & > .room-area__input:nth-child(1n+3)
+      margin-top: 25px

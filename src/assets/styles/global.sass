@@ -1,0 +1,177 @@
+*
+  box-sizing: border-box
+
+select
+  -moz-appearance: none
+  -webkit-appearance: none
+
+select::-ms-value
+  background: none
+
+select::-ms-expand
+  display: none
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance: textfield
+
+a
+  text-decoration: none
+  color: inherit
+  font-family: inherit
+  border: none
+  -webkit-tap-highlight-color: transparent
+  &:active
+    border: none
+  &:focus-visible
+    outline-offset: -2px
+    outline: 2px solid #fff
+    z-index: 1
+
+button
+  font-family: inherit
+  color: inherit
+  border: none
+  background: none
+  cursor: pointer
+  -webkit-tap-highlight-color: transparent
+
+input
+  font-family: inherit
+  color: inherit
+  background: none
+  border: none
+  outline: none
+  -webkit-appearance: none
+  &::placeholder
+    opacity: 1
+  &::placeholder
+    color: inherit
+    opacity: 1
+  &:invalid
+    box-shadow: none
+
+img
+  width: 100%
+  user-select: none
+
+select::-ms-expand
+  display: none
+
+input::-ms-clear
+  width: 15px
+  height: 15px
+
+table
+  border-collapse: collapse
+
+.container
+  margin: 0 auto
+  padding: 0 30px
+  max-width: 1780px
+  width: 100%
+
+.input
+  padding: 8px 20px
+  background-color: #fff
+  border-radius: 4px
+  &::placeholder
+    color: rgba(0, 0, 0, 0.5)
+  &:focus-visible
+    outline: 2px solid $accent-color
+    outline-offset: 0
+  &:invalid
+    outline-color: $error-color
+    &:focus-visible
+      outline-color: $accent-color
+      &:invalid
+        outline-color: $error-color
+
+.button
+  padding: 12px 20px
+  display: inline-block
+  width: 100%
+  max-width: 260px
+  +h(18px)
+  color: $text-color-reverse
+  text-align: center
+  border-radius: 4px
+  background-color: #fff
+  transition: color 0.3s ease, background-color 0.3s ease
+  &:focus-visible
+    outline: 2px solid $accent-color
+  &:hover
+    color: $text-color
+    background-color: $accent-color
+  &-accent
+    color: $text-color
+    background-color: $accent-color
+    &:focus-visible
+      outline: 2px solid #fff
+    &:hover
+      color: $text-color-reverse
+      background-color: #fff
+
+// Стили для контейнера чекбокса
+
+.custom-checkbox-container
+  display: flex
+  align-items: center
+
+// Скрыть стандартный чекбокс
+
+.custom-checkbox
+  position: absolute
+  opacity: 0
+
+// Стили для кастомного чекбокса
+
+.custom-checkbox-label
+  position: relative
+  display: inline-block
+  width: 15px
+  height: 15px
+  border: 1px solid #fff
+  cursor: pointer
+
+// Стили для состояния 'checked'
+
+.custom-checkbox-label::after
+  content: ''
+  position: absolute
+  left: 52%
+  top: 55%
+  width: 14px
+  height: 10px
+  transform: translate(-50%, -50%)
+  background: url('../images/checkbox.svg') no-repeat center / 80%
+  opacity: 0
+
+.custom-checkbox:checked + .custom-checkbox-label::after
+  animation: fadeIn 0.1s forwards ease-in-out
+
+.custom-checkbox:not(:checked) + .custom-checkbox-label::after
+  animation: fadeOut 0.1s forwards ease
+
+@keyframes fadeIn
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes fadeOut
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+// Стили для фокуса
+
+.custom-checkbox:focus-visible + .custom-checkbox-label
+  outline: 2px solid $accent-color
+  outline-offset: 0px
+  border-radius: 1px

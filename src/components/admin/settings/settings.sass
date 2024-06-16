@@ -1,0 +1,74 @@
+.settings
+  &-container
+    margin-top: 110px
+    padding: 50px
+    max-width: 1240px
+    +card-shadow
+  &-content
+    margin: 50px 0 40px 0
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    & > .settings-input:nth-child(2n+1)
+      margin-right: 20px
+    & > .settings-input:nth-child(1n+3)
+      margin-top: 20px
+  &__title
+    &-item
+      margin: 0
+      position: relative
+      display: inline-block
+      +h(24px)
+      font-weight: bold
+      color: $text-color
+      &::after
+        content: ''
+        position: absolute
+        bottom: 1px
+        left: 0
+        width: 100%
+        height: 1px
+        background-color: #fff
+  &-input
+    display: flex
+    width: 100%
+    max-width: 490px
+    &__label
+      margin: 0 20px 0 0
+      align-self: center
+      width: 100%
+      max-width: 330px
+      +h(16px)
+      color: $text-color
+    &__wrapper
+      display: flex
+      align-items: center
+      width: 100%
+      max-width: 160px
+    &__item
+      margin-right: 5px
+      width: 66px
+      text-align: center
+      +h(14px)
+      font-weight: bold
+      color: $text-color
+      border-bottom: 1px solid #fff
+      transition: border-bottom-color 0.3s ease
+      &::placeholder
+        color: rgba(255, 254, 254, 0.5)
+      &:invalid
+        border-bottom-color: $accent-color
+      &:focus-visible
+        border-bottom-color: #ffff00
+        &:invalid
+          border-bottom-color: $accent-color
+    &__text
+      +h(14px)
+      font-weight: bold
+      color: $text-color
+  &-footer
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &__button
+      max-width: 185px
