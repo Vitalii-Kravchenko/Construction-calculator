@@ -9,6 +9,7 @@
     +h(40px)
     font-weight: bold
     color: $text-color
+    text-align: center
   &-form
     margin-top: 50px
     padding: 60px 60px 65px 60px
@@ -42,3 +43,49 @@
   &-error
     +h(18px)
     color: $error-color
+    text-align: center
+
+@media ( max-width: 768px )
+  .login
+    &-container
+      margin-top: 90px
+    &__title
+      font-size: 34px
+
+@media ( max-width: 576px )
+  .login
+    &-container
+      margin-top: 70px
+    &__title
+      max-width: 420px
+    &-form
+      padding: 40px 40px 45px 40px
+    &-input
+      &__title
+        font-size: 22px
+      &__item
+        margin-top: 20px
+        font-size: 22px
+    &__button
+      font-size: 22px
+    &-error
+      font-size: 16px
+
+@media ( max-width: 480px )
+  .login
+    &-input
+      &__item
+        width: 100%
+
+@media ( max-width: 375px )
+  .login
+    &-input
+      &__title
+        font-size: 20px
+      &__item
+        width: 100%
+        font-size: 20px
+    &__button
+      font-size: 20px
+    &-form
+      padding: 40px 30px 45px 30px

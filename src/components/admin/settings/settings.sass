@@ -1,4 +1,5 @@
 .settings
+  padding: 0 30px
   &-container
     margin-top: 110px
     padding: 50px
@@ -71,4 +72,107 @@
     justify-content: space-between
     align-items: center
     &__button
+      margin-left: 20px
       max-width: 185px
+
+@media ( max-width: 1366px )
+  .settings
+    max-width: none
+    &-input
+      max-width: 480px
+      &-__abel
+        max-width: 320px
+
+@media ( max-width: 1200px )
+  .settings
+    &-container
+      padding: 40px
+    &-input
+      max-width: 420px
+      &__label
+        max-width: 288px
+    &-content
+      & > .settings-input:nth-child(2n+1)
+        margin-right: 10px
+
+@media ( max-width: 992px )
+  .settings
+    &-container
+      margin-top: 90px
+    &__title
+      &-item
+        font-size: 20px
+        text-align: center
+    &-input
+      max-width: none
+      &__label
+        max-width: none
+    &-content
+      flex-direction: column
+      & > .settings-input:nth-child(2n+1)
+        margin-right: 0
+      & > .settings-input:nth-child(1n+2)
+        margin-top: 25px
+
+@media ( max-width: 768px )
+  .settings
+    &-footer
+      flex-direction: column
+      &__button
+        margin: 20px 0 0 0
+
+@media ( max-width: 576px )
+  .settings
+    &-container
+      margin-top: 70px
+    &__title
+      display: flex
+      flex-direction: column
+      align-items: center
+    &-input
+      flex-direction: column
+      align-items: center
+      &__wrapper
+        flex-direction: column
+        align-items: center
+        max-width: none
+      &__label
+        margin-right: 0
+        text-align: center
+      &__item
+        margin-top: 10px
+        margin-right: 0
+        width: 100%
+        max-width: none
+      &__text
+        margin-top: 5px
+    &-content
+      & > .settings-input:nth-child(1n+2)
+        margin-top: 30px
+
+@media ( max-width: 480px )
+  .settings
+    &-container
+      margin-top: 50px
+    padding: 30px
+    &__title
+      &-item
+        font-size: 19px
+        text-align: center
+    &-input
+      &__label
+        font-size: 16px
+      &__item
+        font-size: 16px
+      &__text
+        font-size: 14px
+    &-content
+      margin: 30px 0 30px 0
+
+@media ( max-width: 375px )
+  .settings
+    &-container
+      margin-top: 30px
+    &-footer
+      &__button
+        max-width: none

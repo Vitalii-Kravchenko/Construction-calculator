@@ -104,17 +104,11 @@ table
   transition: color 0.3s ease, background-color 0.3s ease
   &:focus-visible
     outline: 2px solid $accent-color
-  &:hover
-    color: $text-color
-    background-color: $accent-color
   &-accent
     color: $text-color
     background-color: $accent-color
     &:focus-visible
       outline: 2px solid #fff
-    &:hover
-      color: $text-color-reverse
-      background-color: #fff
 
 // Стили для контейнера чекбокса
 
@@ -175,3 +169,21 @@ table
   outline: 2px solid $accent-color
   outline-offset: 0px
   border-radius: 1px
+
+@media ( min-width: 992px )
+  .button
+    &:hover
+      color: $text-color
+      background-color: $accent-color
+    &-accent
+      &:hover
+        color: $text-color-reverse
+        background-color: #fff
+
+@media ( max-width: 576px )
+  .button
+    font-size: 16px
+
+@media ( max-width: 375px )
+  .button
+    font-size: 15px

@@ -1,5 +1,4 @@
 .room-area
-  margin-right: 30px
   padding: 50px
   display: flex
   flex-direction: column
@@ -46,7 +45,7 @@
   &__title
     &-item
       position: relative
-      margin: 35px 0 0 0
+      margin: 50px 0 0 0
       display: inline-block
       +h(24px)
       font-weight: bold
@@ -68,3 +67,75 @@
       margin-right: 20px
     & > .room-area__input:nth-child(1n+3)
       margin-top: 25px
+
+@media ( max-width: 1366px )
+  .room-area
+    max-width: none
+    &__input
+      max-width: 450px
+      &-label
+        max-width: 320px
+
+@media ( max-width: 1200px )
+  .room-area
+    &__input
+      max-width: 405px
+      &-label
+        max-width: 288px
+
+@media ( max-width: 992px )
+  .room-area
+    &__input
+      max-width: none
+      &-label
+        max-width: none
+    &__content
+      flex-direction: column
+      & > .room-area__input:nth-child(2n+1)
+        margin-right: 0
+      & > .room-area__input:nth-child(1n+2)
+        margin-top: 25px
+
+@media ( max-width: 576px )
+  .room-area
+    &__title
+      display: flex
+      flex-direction: column
+      align-items: center
+      &-item
+        font-size: 22px
+    &__input
+      flex-direction: column
+      align-items: center
+      &-wrapper
+        flex-direction: column
+        align-items: center
+        max-width: none
+      &-label
+        margin-right: 0
+        text-align: center
+      &-item
+        margin-top: 10px
+        margin-right: 0
+        width: 100%
+        max-width: none
+      &-text
+        margin-top: 5px
+    &__content
+      & > .room-area__input:nth-child(1n+2)
+        margin-top: 30px
+
+@media ( max-width: 480px )
+  .room-area
+    padding: 30px
+    &__title
+      &-item
+        font-size: 20px
+        text-align: center
+    &__input
+      &-label
+        font-size: 16px
+      &-item
+        font-size: 16px
+      &-text
+        font-size: 14px

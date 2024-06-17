@@ -7,7 +7,7 @@ import './calculator.sass';
 const Calculator = () => {
     return (
         <section className="calculator">
-            <div className="container">
+            <div className="container calculator-container">
                 <div className="calculator-content">
                     <div className="calculator-settings">
                         <div className="calculator-tabs">

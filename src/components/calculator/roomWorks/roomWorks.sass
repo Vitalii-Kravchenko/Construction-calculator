@@ -1,5 +1,4 @@
 .room-works
-  margin-right: 30px
   padding: 50px
   display: flex
   flex-direction: column
@@ -28,7 +27,7 @@
     justify-content: space-between
     flex-wrap: wrap
     & > .room-works__checkbox:nth-child(2n+1)
-      margin-right: 20px
+      margin-right: 30px
     & > .room-works__checkbox:nth-child(1n+3)
       margin-top: 20px
   &__checkbox
@@ -36,12 +35,80 @@
     justify-content: space-between
     align-items: center
     width: 100%
-    max-width: 440px
+    max-width: 400px
     &-title
-      margin: 0
+      margin: 0 10px 0 0
       align-self: center
       +h(16px)
       color: $text-color
     &-price
       +h(14px)
       color: $accent-color
+
+@media ( max-width: 1366px )
+  .room-works
+    max-width: none
+    &__checkbox
+      max-width: 40%
+
+@media ( max-width: 1200px )
+  .room-works
+    &__content
+      & > .room-works__checkbox:nth-child(2n+1)
+        margin-right: 0
+    &__checkbox
+      max-width: 405px
+
+@media ( max-width: 992px )
+  .room-works
+    &__checkbox
+      max-width: none
+    &__content
+      flex-direction: column
+      & > .room-works__checkbox:nth-child(2n+1)
+        margin-right: 0
+      & > .room-works__checkbox:nth-child(1n+2)
+        margin-top: 25px
+
+@media ( max-width: 576px )
+  .room-works
+    &__title
+      display: flex
+      flex-direction: column
+      align-items: center
+      &-item
+        font-size: 21px
+        text-align: center
+    &__checkbox
+      align-items: center
+      &-wrapper
+        flex-direction: column
+        align-items: center
+        max-width: none
+      &-item
+        margin-top: 10px
+        margin-right: 0
+        width: 100%
+        max-width: none
+    &__content
+      & > .room-works__checkbox:nth-child(1n+2)
+        margin-top: 30px
+
+@media ( max-width: 480px )
+  .room-works
+    padding: 30px
+    &__title
+      &-item
+        max-width: 230px
+        font-size: 20px
+        text-align: center
+    &__checkbox
+      &-item
+        font-size: 16px
+
+@media ( max-width: 375px )
+  .room-works
+    &__title
+      &-item
+        max-width: 205px
+        font-size: 18px

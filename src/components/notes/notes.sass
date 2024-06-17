@@ -10,8 +10,48 @@
     padding: 0
     max-width: 860px
     &__item
+      position: relative
       +h(18px)
       color: $text-color
       &::marker
         color: $accent-color
         font-size: 12px
+      &:after
+        content: '•'
+        position: absolute
+        left: 50%
+        top: -10px
+        transform: translateX(-50%)
+        font-size: 8px
+        color: $accent-color
+        opacity: 0
+
+@media ( max-width: 576px )
+  .notes
+    align-items: center
+    &__title
+      font-size: 16px
+    &-list
+      position: relative
+      &__item
+        margin-top: 30px
+        font-size: 16px
+        text-align: center
+        list-style: none
+        &:after
+          opacity: 1
+
+@media ( max-width: 576px )
+  .notes
+    &-list
+      &__item
+        font-size: 15px
+        &:after
+          top: -13px
+
+@media ( max-width: 375px )
+  .notes
+    &-list
+      &__item
+        margin-top: 20px
+        font-size: 14px

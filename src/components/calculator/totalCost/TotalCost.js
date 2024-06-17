@@ -5,7 +5,7 @@ const TotalCost = () => {
         <div className="total-cost">
             <div className="total-cost__wrapper">
                 <span className="total-cost__wrapper-price">0 грн</span>
-                <h4 className="total-cost__wrapper-text">Примерная <br/> общая стоимость работ</h4>
+                <h4 className="total-cost__wrapper-text">Примерная общая стоимость работ</h4>
             </div>
             <div className="total-cost__wrapper">
                 <span className="total-cost__wrapper-price">0 $</span>
