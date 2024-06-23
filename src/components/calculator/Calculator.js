@@ -16,8 +16,8 @@ const Calculator = () => {
                             <div className="calculator-tabs__line calculator-tabs__line--active"></div>
                         </div>
 
-                        {/*<RoomArea/>*/}
-                        <RoomWorks/>
+                        <RoomArea/>
+                        {/*<RoomWorks/>*/}
                     </div>
 
                     <TotalCost/>
