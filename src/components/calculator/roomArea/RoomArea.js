@@ -1,7 +1,20 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {roomAreaFetchData, roomAreaSetCeilingHeight, roomAreaSetTotalSize, selectAll} from './roomAreaSlice';
+import {
+    roomAreaFetchData,
+    roomAreaSetTotalSizeArea,
+    roomAreaSetTotalSizeHeight,
+    roomAreaSetCeilingHeight,
+    roomAreaUpdateOne,
+    selectAll,
+} from './roomAreaSlice';
+
+import {selectAll as selectAllRoomWorks} from '../roomWorks/roomWorksSlice';
+
+import {addAmountOfMoney, resetAmountOfMoney} from '../totalCost/totalCostSlice';
+
+import useCalculate from "../../../hooks/useCalculate";
 
 import Notes from "../../notes/Notes";
 import Spinner from "../../spinner/Spinner";
@@ -9,37 +22,33 @@ import Spinner from "../../spinner/Spinner";
 import './roomArea.sass';
 
 const RoomArea = () => {
+    const roomAreaCeilingHeight = useSelector(
+        state => state.roomArea.roomAreaCeilingHeight
+    );
     const roomAreaItems = useSelector(selectAll);
     const roomAreaLoadingStatus = useSelector(
         state => state.roomArea.roomAreaLoadingStatus
     );
+    const roomAreaTotalSize = useSelector(
+        state => state.roomArea.roomAreaTotalSize
+    );
+    const roomWorksItems = useSelector(selectAllRoomWorks);
 
-    const [inputValueCeilingHeight, setInputValueCeilingHeight] = useState('');
-    const [inputsValue, setInputsValue] = useState({});
-    const [inputMin, setInputMin] = useState(0);
-    const [inputMax, setInputMax] = useState(99999);
+    const inputMin = 0;
+    const inputMax = 99999;
 
     const dispatch = useDispatch();
+    const {calculate} = useCalculate();
 
     useEffect(() => {
-        dispatch(roomAreaFetchData());
+        if (roomAreaItems.length === 0) {
+            dispatch(roomAreaFetchData());
+        }
     }, []);
 
     useEffect(() => {
         if (roomAreaItems.length !== 0) {
-            const initInputsValue = {};
-
-            roomAreaItems.forEach(({id, value}) => {
-                initInputsValue[id] = value;
-            })
-
-            setInputsValue({...inputsValue, ...initInputsValue});
-        }
-    }, [roomAreaItems]);
-
-    useEffect(() => {
-        if (Object.keys(inputsValue).length !== 0) {
-            const totalSize = Object.values(inputsValue).reduce((acc, value) => {
+            const totalSize = roomAreaItems.reduce((acc, {value}) => {
                 if (value < inputMin || value > inputMax || value === '') {
                     return acc + 0;
                 }
@@ -47,12 +56,32 @@ const RoomArea = () => {
                 return acc + parseFloat(value);
             }, 0);
 
-            dispatch(roomAreaSetTotalSize(totalSize));
+            let height;
+
+            if (roomAreaCeilingHeight < inputMin || roomAreaCeilingHeight > inputMax || roomAreaCeilingHeight === '') {
+                height = 0;
+            } else {
+                height = parseFloat(roomAreaCeilingHeight);
+            }
+
+            dispatch(roomAreaSetTotalSizeArea(totalSize));
+            dispatch(roomAreaSetTotalSizeHeight(height));
         }
-    }, [inputsValue]);
+    }, [roomAreaItems, roomAreaCeilingHeight]);
+
+    useEffect(() => {
+        dispatch(resetAmountOfMoney());
+
+        roomWorksItems.forEach(({calculateName, count, checked}) => {
+            if (checked) {
+                dispatch(addAmountOfMoney(calculate(calculateName, count)));
+            }
+        })
+    }, [roomAreaTotalSize]);
 
     const onChangeInputValue = (e, id) => {
-        setInputsValue({...inputsValue, [id]: e.target.value});
+        const value = e.target.value === '' ? 0 : e.target.value;
+        dispatch(roomAreaUpdateOne({id, changes: {value}}))
     }
 
     const renderRoomAreaItems = (arr) => {
@@ -61,7 +90,7 @@ const RoomArea = () => {
                 <span className='room-area__content-none'>Элементов нету.</span>
             )
         } else {
-            return arr.map(({name, id}) => {
+            return arr.map(({name, value, id}) => {
                 return (
                     <div className="room-area__input" key={id}>
                         <label className='room-area__input-label' htmlFor={id}>{name}</label>
@@ -74,7 +103,7 @@ const RoomArea = () => {
                                 min={inputMin}
                                 max={inputMax}
                                 step='0.1'
-                                value={inputsValue[id] || ''}
+                                value={value === 0 ? '' : value}
                                 onChange={(e) => onChangeInputValue(e, id)}
                             />
                             <span className='room-area__input-text'>м<sup>2</sup></span>
@@ -86,15 +115,10 @@ const RoomArea = () => {
     }
 
     const onChangeInputCeiling = (e) => {
-        const ceilingHeight = e.target.value;
+        const value = e.target.value === '' ? 0 : e.target.value;
 
-        setInputValueCeilingHeight(ceilingHeight);
+        dispatch(roomAreaSetCeilingHeight(value));
 
-        if (ceilingHeight < inputMin || ceilingHeight > inputMax || ceilingHeight === '') {
-            dispatch(roomAreaSetCeilingHeight(0));
-        } else {
-            dispatch(roomAreaSetCeilingHeight(parseFloat(ceilingHeight)));
-        }
     }
 
     const elements = renderRoomAreaItems(roomAreaItems);
@@ -102,7 +126,8 @@ const RoomArea = () => {
     return (
         <div className="room-area">
             <div className="room-area__input">
-                <label className='room-area__input-label' htmlFor='input-ceiling-height'>Высота потолка в квартире:</label>
+                <label className='room-area__input-label' htmlFor='input-ceiling-height'>Высота потолка в
+                    квартире:</label>
                 <div className="room-area__input-wrapper">
                     <input
                         className='room-area__input-item'
@@ -112,8 +137,8 @@ const RoomArea = () => {
                         min={inputMin}
                         max={inputMax}
                         step='0.1'
-                        value={inputValueCeilingHeight}
-                        onChange={onChangeInputCeiling}
+                        value={roomAreaCeilingHeight === 0 ? '' : roomAreaCeilingHeight}
+                        onChange={e => onChangeInputCeiling(e)}
                     />
                     <span className='room-area__input-text'>м</span>
                 </div>

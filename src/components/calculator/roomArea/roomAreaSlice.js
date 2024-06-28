@@ -6,8 +6,11 @@ const roomAreaAdapter = createEntityAdapter();
 
 const initialState = roomAreaAdapter.getInitialState({
     roomAreaLoadingStatus: 'idle',
-    roomAreaTotalSize: 0,
-    roomAreaCeilingHeight: 0
+    roomAreaCeilingHeight: 0,
+    roomAreaTotalSize: {
+        area: 0,
+        height: 0
+    },
 });
 
 export const roomAreaFetchData = createAsyncThunk(
@@ -23,12 +26,16 @@ const roomAreaSlice = createSlice({
     name: 'roomArea',
     initialState,
     reducers: {
-        roomAreaSetTotalSize: (state, action) => {
-            state.roomAreaTotalSize = (action.payload)
+        roomAreaSetTotalSizeArea: (state, action) => {
+            state.roomAreaTotalSize.area = (action.payload)
+        },
+        roomAreaSetTotalSizeHeight: (state, action) => {
+            state.roomAreaTotalSize.height = (action.payload)
         },
         roomAreaSetCeilingHeight: (state, action) => {
             state.roomAreaCeilingHeight = action.payload
         },
+        roomAreaUpdateOne: roomAreaAdapter.updateOne,
     },
     extraReducers: (builder) => {
         builder
@@ -48,12 +55,15 @@ const roomAreaSlice = createSlice({
 
 
 export const {selectAll} = roomAreaAdapter.getSelectors(state => state.roomArea);
+export const {selectById} = roomAreaAdapter.getSelectors(state => state.roomArea);
 
 const {reducer, actions} = roomAreaSlice;
 
 export const {
-    roomAreaSetTotalSize,
-    roomAreaSetCeilingHeight
+    roomAreaSetTotalSizeArea,
+    roomAreaSetTotalSizeHeight,
+    roomAreaSetCeilingHeight,
+    roomAreaUpdateOne,
 } = actions;
 
 export default reducer;

@@ -1,5 +1,5 @@
-import RoomArea from "./roomArea/RoomArea";
-import RoomWorks from "./roomWorks/RoomWorks";
+import {Link, NavLink, Outlet} from 'react-router-dom';
+
 import TotalCost from "./totalCost/TotalCost";
 
 import './calculator.sass';
@@ -11,19 +11,35 @@ const Calculator = () => {
                 <div className="calculator-content">
                     <div className="calculator-settings">
                         <div className="calculator-tabs">
-                            <a className="calculator-tabs__item" href="#">Площадь помещения</a>
-                            <a className="calculator-tabs__item" href="#">Необходимые работы</a>
-                            <div className="calculator-tabs__line calculator-tabs__line--active"></div>
+                            <NavLink
+                                className={({isActive}) =>
+                                    isActive
+                                        ? 'calculator-tabs__item calculator-tabs__item--active'
+                                        : 'calculator-tabs__item'
+                                }
+                                to='/'
+                            >
+                                Площадь помещения
+                            </NavLink>
+                            <NavLink
+                                className={({isActive}) =>
+                                    isActive
+                                        ? 'calculator-tabs__item calculator-tabs__item--active'
+                                        : 'calculator-tabs__item'
+                                }
+                                to='room-works'
+                            >
+                                Необходимые работы
+                            </NavLink>
                         </div>
 
-                        <RoomArea/>
-                        {/*<RoomWorks/>*/}
+                        <Outlet/>
                     </div>
 
                     <TotalCost/>
                 </div>
 
-                <a className='button button-accent calculator__button-login' href="#">Войти как администратор</a>
+                <Link className='button button-accent calculator__button-login' to='admin/login'>Войти как администратор</Link>
             </div>
         </section>
     );
