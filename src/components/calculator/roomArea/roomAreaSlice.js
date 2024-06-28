@@ -54,8 +54,7 @@ const roomAreaSlice = createSlice({
 })
 
 
-export const {selectAll} = roomAreaAdapter.getSelectors(state => state.roomArea);
-export const {selectById} = roomAreaAdapter.getSelectors(state => state.roomArea);
+export const {selectAll, selectById} = roomAreaAdapter.getSelectors(state => state.roomArea);
 
 const {reducer, actions} = roomAreaSlice;
 

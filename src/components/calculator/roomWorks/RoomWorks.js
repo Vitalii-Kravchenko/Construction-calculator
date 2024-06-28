@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {roomWorksFetchData, selectAll, roomWorksUpdateOne} from "./roomWorksSlice";
 import {addAmountOfMoney, removeAmountOfMoney} from '../totalCost/totalCostSlice';
 
-import useCalculate from "../../../hooks/useCalculate";
+import useRoomAreaCalculate from "../../../hooks/useRoomAreaCalculate";
 
 import Notes from "../../notes/Notes";
 import Spinner from "../../spinner/Spinner";
@@ -18,7 +18,7 @@ const RoomWorks = () => {
     );
 
     const dispatch = useDispatch();
-    const {calculate} = useCalculate();
+    const {calculate} = useRoomAreaCalculate();
 
     useEffect(() => {
         if (roomWorksItems.length === 0) {

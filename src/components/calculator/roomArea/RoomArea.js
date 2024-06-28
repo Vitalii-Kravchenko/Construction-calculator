@@ -14,7 +14,7 @@ import {selectAll as selectAllRoomWorks} from '../roomWorks/roomWorksSlice';
 
 import {addAmountOfMoney, resetAmountOfMoney} from '../totalCost/totalCostSlice';
 
-import useCalculate from "../../../hooks/useCalculate";
+import useRoomAreaCalculate from "../../../hooks/useRoomAreaCalculate";
 
 import Notes from "../../notes/Notes";
 import Spinner from "../../spinner/Spinner";
@@ -38,7 +38,7 @@ const RoomArea = () => {
     const inputMax = 99999;
 
     const dispatch = useDispatch();
-    const {calculate} = useCalculate();
+    const {calculate} = useRoomAreaCalculate();
 
     useEffect(() => {
         if (roomAreaItems.length === 0) {

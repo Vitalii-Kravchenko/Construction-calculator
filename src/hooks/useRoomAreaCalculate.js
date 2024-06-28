@@ -4,7 +4,7 @@ import store from "../store";
 
 import {selectById} from "../components/calculator/roomArea/roomAreaSlice";
 
-const useCalculate = (formulaName = '', count = 0) => {
+const useRoomAreaCalculate = (formulaName = '', count = 0) => {
     const area = useSelector(
         state => state.roomArea.roomAreaTotalSize.area,
     );
@@ -51,4 +51,4 @@ const useCalculate = (formulaName = '', count = 0) => {
     return {calculate};
 }
 
-export default useCalculate;
+export default useRoomAreaCalculate;
