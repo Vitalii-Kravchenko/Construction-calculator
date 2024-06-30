@@ -50,6 +50,22 @@ const Settings = () => {
         }
     }
 
+    const formatUnit = (unit) => {
+        const parts = unit.split(/(м2)/g);
+
+        return parts.map((part, index) => {
+            if (part === 'м2') {
+                return (
+                    <span key={index}>
+                                  м<sup>2</sup>
+                                </span>
+                );
+            }
+
+            return part;
+        });
+    }
+
     const renderSettingsItems = (arr) => {
         if (arr.length === 0) {
             return (
@@ -74,7 +90,7 @@ const Settings = () => {
                                 onBlur={e => onSubmitInputValue(e, id)}
                                 onKeyDown={(e) => onKeyDown(e, id, count)}
                             />
-                            <span className='settings-input__text'>{unit}</span>
+                            <span className='settings-input__text'>{formatUnit(unit)}</span>
                         </div>
                     </div>
                 )

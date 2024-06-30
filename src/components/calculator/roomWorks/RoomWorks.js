@@ -37,6 +37,22 @@ const RoomWorks = () => {
         }
     }
 
+    const formatUnit = (unit) => {
+        const parts = unit.split(/(м2)/g);
+
+        return parts.map((part, index) => {
+            if (part === 'м2') {
+                return (
+                    <span key={index}>
+                                  м<sup>2</sup>
+                                </span>
+                );
+            }
+
+            return part;
+        });
+    }
+
     const renderRoomWorksItems = (arr) => {
         if (arr.length === 0) {
             return (
@@ -47,7 +63,7 @@ const RoomWorks = () => {
                 return (
                     <div className="room-works__checkbox" key={id}>
                         <label className="room-works__checkbox-title" htmlFor={id}>{name} <span
-                            className="room-works__checkbox-price">{count}{unit}</span></label>
+                            className="room-works__checkbox-price">{count}{formatUnit(unit)}</span></label>
                         <div className="custom-checkbox-container">
                             <input
                                 type="checkbox"
