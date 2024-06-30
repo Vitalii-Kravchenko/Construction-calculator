@@ -30,9 +30,9 @@ const TotalCost = () => {
     const transformMoney = (currency) => {
         switch (currency) {
             case 'uah':
-                return uah.toFixed(2);
+                return uah === 0 ? 0 : uah.toFixed(2);
             case 'usd':
-                return (uah / usd).toFixed(2);
+                return uah === 0 ? 0 : (uah / usd).toFixed(2);
             default:
                 return 0;
         }
