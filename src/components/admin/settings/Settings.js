@@ -2,6 +2,8 @@ import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
+import {setLoginStatus} from "../login/loginSlice";
+
 import {
     settingsFetchData,
     settingsSendData,
@@ -12,7 +14,7 @@ import {
 import Notes from "../../notes/Notes";
 
 import './settings.sass';
-import {setLoginStatus} from "../login/loginSlice";
+import Spinner from "../../spinner/Spinner";
 
 const Settings = () => {
     const dispatch = useDispatch();
@@ -22,6 +24,9 @@ const Settings = () => {
     const newItemsCount = useSelector(
         state => state.settings.newItemsCount
     );
+    const settingsLoadingStatus = useSelector(
+        state => state.settings.settingsLoadingStatus
+    )
     const minInputValue = 10;
     const maxInputValue = 99999;
 
@@ -116,7 +121,7 @@ const Settings = () => {
                     <h3 className='settings__title-item'>Установите средний ценник каждой работы:</h3>
                 </div>
                 <div className="settings-content">
-                    {elements}
+                    {settingsLoadingStatus === 'loading' ? <Spinner/> : elements}
                 </div>
 
                 <div className="settings-footer">

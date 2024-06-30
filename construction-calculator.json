@@ -84,7 +84,7 @@
   "operations": [
     {
       "name": "Демонтаж, зачистка старой отделки",
-      "count": 20,
+      "count": 1000,
       "unit": "грн/м2",
       "calculateName": "calculateGeneralWork",
       "id": "1"
