@@ -2,9 +2,8 @@ import {Suspense} from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 import Header from "../header/Header";
-import Settings from "../admin/settings/Settings";
 
-import {MainPage, LoginPage} from "../pages";
+import {MainPage, LoginPage, SettingsPage} from "../pages";
 import RoomArea from "../calculator/roomArea/RoomArea";
 import RoomWorks from "../calculator/roomWorks/RoomWorks";
 
@@ -24,7 +23,7 @@ function App() {
                             <Route path='room-works' element={<RoomWorks/>}/>
                         </Route>
                         <Route path="/admin/login" element={<LoginPage/>}/>
-                        <Route path="/admin/settings" element={<Settings/>}/>
+                        <Route path="/admin/settings" element={<SettingsPage/>}/>
                     </Routes>
                 </Suspense>
             </div>

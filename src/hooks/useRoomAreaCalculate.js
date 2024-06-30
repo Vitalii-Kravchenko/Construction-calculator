@@ -15,7 +15,7 @@ const useRoomAreaCalculate = (formulaName = '', count = 0) => {
     const calculate = (formulaName, count) => {
         switch (formulaName) {
             case 'calculateGeneralWork':
-                return area * 20;
+                return area * count;
             case 'calculateWallWork':
                 return ((4 * area) * height) * count;
             case 'calculatePlinthWork':
