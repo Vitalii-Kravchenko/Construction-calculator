@@ -15,8 +15,8 @@ function App() {
     return (
         <Router>
             <div className="app">
-                <Header/>
                 <Suspense fallback={<Spinner/>}>
+                    <Header/>
                     <Routes>
                         <Route path="/" element={<MainPage/>}>
                             <Route index element={<RoomArea/>}/>

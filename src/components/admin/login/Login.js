@@ -1,12 +1,18 @@
+import {useDispatch} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {Formik, Form, Field} from "formik";
-import {useHttp} from "../../../hooks/http.hook";
 import * as Yup from "yup";
+
+import {useHttp} from "../../../hooks/http.hook";
+
+import {setLoginStatus} from './loginSlice';
 
 import './login.sass';
 
 const Login = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const {request} = useHttp();
 
     const validationSchema = Yup.object({
@@ -21,8 +27,14 @@ const Login = () => {
         request('/admin')
             .then(res => {
                 if (values.login === res.login && values.password === res.password) {
+                    localStorage.setItem('logged', 'true');
+                    dispatch(setLoginStatus(true));
+
                     return navigate('/admin/settings');
                 } else {
+                    localStorage.setItem('logged', 'false');
+                    dispatch(setLoginStatus(false));
+
                     actions.setErrors({
                         general: 'Неверный логин или пароль',
                     })

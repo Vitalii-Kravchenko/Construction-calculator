@@ -1,10 +1,28 @@
-import {Link, NavLink, Outlet} from 'react-router-dom';
+import {NavLink, Outlet, useNavigate} from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 import TotalCost from "./totalCost/TotalCost";
 
 import './calculator.sass';
+import {useEffect} from "react";
 
 const Calculator = () => {
+    const navigate = useNavigate();
+
+    const logged = useSelector(
+        state => state.login.logged
+    )
+
+    const onLogin = (e) => {
+        e.preventDefault();
+
+        if (logged) {
+            navigate("/admin/settings");
+        } else{
+            navigate("admin/login");
+        }
+    }
+
     return (
         <section className="calculator">
             <div className="container calculator-container">
@@ -39,7 +57,7 @@ const Calculator = () => {
                     <TotalCost/>
                 </div>
 
-                <Link className='button button-accent calculator__button-login' to='admin/login'>Войти как администратор</Link>
+                <a className='button button-accent calculator__button-login' href='#' onClick={onLogin}>Войти как администратор</a>
             </div>
         </section>
     );

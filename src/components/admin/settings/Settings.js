@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {
@@ -11,9 +12,11 @@ import {
 import Notes from "../../notes/Notes";
 
 import './settings.sass';
+import {setLoginStatus} from "../login/loginSlice";
 
 const Settings = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const settingsItems = useSelector(selectAll);
     const newItemsCount = useSelector(
@@ -79,6 +82,15 @@ const Settings = () => {
         }
     }
 
+    const exit = (e) => {
+        e.preventDefault();
+
+        localStorage.removeItem("logged");
+        dispatch(setLoginStatus(false));
+
+        navigate('/');
+    }
+
     const elements = renderSettingsItems(settingsItems);
 
     return (
@@ -93,7 +105,7 @@ const Settings = () => {
 
                 <div className="settings-footer">
                     <Notes/>
-                    <a className='button button-accent settings-footer__button' href="#">Выйти</a>
+                    <a className='button button-accent settings-footer__button' href="#" onClick={exit}>Выйти</a>
                 </div>
             </div>
         </div>
