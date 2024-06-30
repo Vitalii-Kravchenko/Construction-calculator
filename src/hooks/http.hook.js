@@ -1,5 +1,5 @@
 export const useHttp = () => {
-    const _apiBase = 'https://66777f74145714a1bd74e080.mockapi.io/api/v1';
+    const _apiBase = 'http://localhost:3001';
     const _apiNBU = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
     const request = async (url, method = 'GET', body = null, headers = {}) => {

@@ -1,0 +1,216 @@
+{
+  "squares": [
+    {
+      "name": "Гостинная",
+      "value": 0,
+      "id": "living_room"
+    },
+    {
+      "name": "Коридор №2",
+      "value": 0,
+      "id": "corridor_2"
+    },
+    {
+      "name": "Гостинная с кухней (студия)",
+      "value": 0,
+      "id": "living_room_with_kitchen_studio"
+    },
+    {
+      "name": "Кухня",
+      "value": 0,
+      "id": "kitchen"
+    },
+    {
+      "name": "Спальня №1",
+      "value": 0,
+      "id": "bedroom_1"
+    },
+    {
+      "name": "Кладовая",
+      "value": 0,
+      "id": "storage_room"
+    },
+    {
+      "name": "Спальня №2",
+      "value": 0,
+      "id": "bedroom_2"
+    },
+    {
+      "name": "Балкон №1",
+      "value": 0,
+      "id": "balcony_1"
+    },
+    {
+      "name": "Детская №1",
+      "value": 0,
+      "id": "childrens_room_1"
+    },
+    {
+      "name": "Балкон №2",
+      "value": 0,
+      "id": "balcony_2"
+    },
+    {
+      "name": "Детская №2",
+      "value": 0,
+      "id": "childrens_room_2"
+    },
+    {
+      "name": "Лоджия",
+      "value": 0,
+      "id": "loggia"
+    },
+    {
+      "name": "Кабинет",
+      "value": 0,
+      "id": "office"
+    },
+    {
+      "name": "Санузел (ванная или душ)",
+      "value": 0,
+      "id": "bathroom_bath_or_shower"
+    },
+    {
+      "name": "Коридор №1",
+      "value": 0,
+      "id": "corridor_1"
+    },
+    {
+      "name": "Санузел (туалет)",
+      "value": 0,
+      "id": "bathroom_toilet"
+    }
+  ],
+  "operations": [
+    {
+      "name": "Демонтаж, зачистка старой отделки",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "1"
+    },
+    {
+      "name": "Откосы оконные",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateWindowWork",
+      "id": "2"
+    },
+    {
+      "name": "Штукатурка стен",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateWallWork",
+      "id": "3"
+    },
+    {
+      "name": "Стяжка пола",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "4"
+    },
+    {
+      "name": "Шпаклевка стен",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateWallWork",
+      "id": "5"
+    },
+    {
+      "name": "Укладка ламината",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "6"
+    },
+    {
+      "name": "Поклейка обоев",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateWallWork",
+      "id": "7"
+    },
+    {
+      "name": "Установка плинтуса на пол",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculatePlinthWork",
+      "id": "8"
+    },
+    {
+      "name": "Покраска стен",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateWallWork",
+      "id": "9"
+    },
+    {
+      "name": "Плитка санузлы, пол кухни, коридор",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateTileWork",
+      "id": "10"
+    },
+    {
+      "name": "Натяжной / гипсокартонный потолок",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "11"
+    },
+    {
+      "name": "Разводка, установка сантехники",
+      "count": 30000,
+      "unit": "грн",
+      "calculateName": "calculateSpecialWork",
+      "id": "12"
+    },
+    {
+      "name": "Покраска потолка",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "13"
+    },
+    {
+      "name": "Электрика: розетки, выключ., свет",
+      "count": 40000,
+      "unit": "грн",
+      "calculateName": "calculateSpecialWork",
+      "id": "14"
+    },
+    {
+      "name": "Шпаклевка потолка",
+      "count": 20,
+      "unit": "грн/м2",
+      "calculateName": "calculateGeneralWork",
+      "id": "15"
+    },
+    {
+      "name": "Вставка межкомнатных дверей",
+      "count": 10000,
+      "unit": "грн/шт/25м2",
+      "calculateName": "calculateDoorWork",
+      "id": "16"
+    },
+    {
+      "name": "Плинтус потолочный",
+      "count": 10,
+      "unit": "грн/м",
+      "calculateName": "calculatePlinthWork",
+      "id": "17"
+    },
+    {
+      "name": "Вставка входной двери",
+      "count": 10000,
+      "unit": "грн/шт",
+      "calculateName": "calculateSpecialWork",
+      "id": "18"
+    }
+  ],
+  "admin": {
+    "login": "root",
+    "password": "Kokosik999"
+  }
+}

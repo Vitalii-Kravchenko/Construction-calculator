@@ -1,28 +1,104 @@
+import {useNavigate} from 'react-router-dom';
+import {Formik, Form, Field} from "formik";
+import {useHttp} from "../../../hooks/http.hook";
+import * as Yup from "yup";
+
 import './login.sass';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const {request} = useHttp();
+
+    const validationSchema = Yup.object({
+        login: Yup.string()
+            .max(20, 'Логин должен содержать максимум 20 символов')
+            .required('Неверный логин или пароль'),
+        password: Yup.string()
+            .required('Неверный логин или пароль')
+    })
+
+    const handleSubmit = (values, actions) => {
+        request('/admin')
+            .then(res => {
+                if (values.login === res.login && values.password === res.password) {
+                    return navigate('/admin/settings');
+                } else {
+                    actions.setErrors({
+                        general: 'Неверный логин или пароль',
+                    })
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка запроса', error);
+            })
+            .finally(() => {
+                actions.setSubmitting(false);
+            });
+    };
+
     return (
-        <section className='login'>
-            <div className="container login-container">
-                <h2 className="login__title">Авторизация администратора</h2>
+        <Formik
+            initialValues={{
+                login: '',
+                password: '',
+            }}
+            validationSchema={validationSchema}
+            validateOnChange={false}
+            validateOnBlur={false}
+            onSubmit={handleSubmit}
+        >
+            {({errors, setErrors, handleChange, isSubmitting}) => (
+                <section className='login'>
+                    <div className="container login-container">
+                        <h2 className="login__title">Авторизация администратора</h2>
 
-                <form className="login-form">
-                    <div className="login-input">
-                        <h4 className="login-input__title">Логин</h4>
-                        <input type="text" className="input login-input__item" placeholder='Login'/>
+                        <Form className="login-form">
+                            <div className="login-input">
+                                <h4 className="login-input__title">Логин</h4>
+                                <Field
+                                    type="text"
+                                    name='login'
+                                    className={errors.general || errors.login || errors.password ? 'input login-input__item login-input__item--error' : 'input login-input__item'}
+                                    placeholder='Login'
+                                    onChange={(e) => {
+                                        setErrors({});
+                                        handleChange(e);
+                                    }}
+                                />
+                            </div>
+
+                            <div className="login-input">
+                                <h4 className="login-input__title">Пароль</h4>
+                                <Field
+                                    type="password"
+                                    name='password'
+                                    className={errors.general || errors.login || errors.password ? 'input login-input__item login-input__item--error' : 'input login-input__item'}
+                                    placeholder='Password'
+                                    onChange={(e) => {
+                                        setErrors({});
+                                        handleChange(e);
+                                    }}
+                                />
+                            </div>
+
+                            {
+                                errors.general ?
+                                    <span className="login-error">{errors.general}</span> :
+                                    errors.login ?
+                                        <span className="login-error">{errors.login}</span> :
+                                        errors.password ?
+                                            <span className="login-error">{errors.password}</span> :
+                                            null
+
+                            }
+
+                            <button className='button login__button' type='submit' disabled={isSubmitting}>Войти
+                            </button>
+                        </Form>
                     </div>
-
-                    <div className="login-input">
-                        <h4 className="login-input__title">Пароль</h4>
-                        <input type="password" className="input login-input__item" placeholder='Password'/>
-                    </div>
-
-                    <span className="login-error">Неверный логин или пароль</span>
-
-                    <button className='button login__button'>Войти</button>
-                </form>
-            </div>
-        </section>
+                </section>
+            )}
+        </Formik>
     );
 };
 
