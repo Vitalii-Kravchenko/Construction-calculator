@@ -51,7 +51,7 @@ const Settings = () => {
     const onKeyDown = (e, id, oldCount) => {
         if (e.key === 'Enter') {
             onSubmitInputValue(e, id, oldCount);
-            e.target.blur(); // Потеря фокуса
+            e.target.blur();
         }
     }
 

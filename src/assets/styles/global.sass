@@ -83,12 +83,12 @@ table
   &::placeholder
     color: rgba(0, 0, 0, 0.5)
   &:focus-visible
-    outline: 2px solid $accent-color
+    outline: 2px solid $focus-color
     outline-offset: 0
   &:invalid
     outline-color: $error-color
     &:focus-visible
-      outline-color: $accent-color
+      outline-color: $focus-color
       &:invalid
         outline-color: $error-color
 
@@ -104,7 +104,7 @@ table
   background-color: #fff
   transition: color 0.3s ease, background-color 0.3s ease
   &:focus-visible
-    outline: 2px solid $accent-color
+    outline: 2px solid $focus-color
   &-accent
     color: $text-color
     background-color: $accent-color
