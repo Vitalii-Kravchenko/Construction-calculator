@@ -34,7 +34,7 @@ export const settingsSendData = createAsyncThunk(
 
 const initialState = settingsAdapter.getInitialState({
     settingsLoadingStatus: 'idle',
-    newItemsCount: {},
+    newCostOfWorks: {},
 });
 
 const settingsSlice = createSlice({
@@ -43,7 +43,7 @@ const settingsSlice = createSlice({
     reducers: {
         settingsUpdateOne: settingsAdapter.updateOne,
         setNewItemsCount: (state, action) => {
-            state.newItemsCount = {...state.newItemsCount, ...action.payload};
+            state.newCostOfWorks = {...state.newCostOfWorks, ...action.payload};
         }
     },
     extraReducers: builder => {

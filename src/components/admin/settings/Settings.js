@@ -21,8 +21,8 @@ const Settings = () => {
     const navigate = useNavigate();
 
     const settingsItems = useSelector(selectAll);
-    const newItemsCount = useSelector(
-        state => state.settings.newItemsCount
+    const newCostOfWorks = useSelector(
+        state => state.settings.newCostOfWorks
     );
     const settingsLoadingStatus = useSelector(
         state => state.settings.settingsLoadingStatus
@@ -41,10 +41,10 @@ const Settings = () => {
     }
 
     const onSubmitInputValue = (e, id, oldCount) => {
-        if (newItemsCount[id] < minInputValue || newItemsCount[id] > maxInputValue) {
+        if (newCostOfWorks[id] < minInputValue || newCostOfWorks[id] > maxInputValue) {
             dispatch(setNewItemsCount({[id]: oldCount}));
         } else {
-            dispatch(settingsSendData(newItemsCount));
+            dispatch(settingsSendData(newCostOfWorks));
         }
     }
 
@@ -90,7 +90,7 @@ const Settings = () => {
                                 min={minInputValue}
                                 max={maxInputValue}
                                 step='1'
-                                value={newItemsCount[id] === count ? '' : newItemsCount[id] === 0 || newItemsCount[id] ? newItemsCount[id] : ''}
+                                value={newCostOfWorks[id] === count ? '' : newCostOfWorks[id] === 0 || newCostOfWorks[id] ? newCostOfWorks[id] : ''}
                                 onChange={(e) => onChangeInputValue(e, id, count)}
                                 onBlur={e => onSubmitInputValue(e, id)}
                                 onKeyDown={(e) => onKeyDown(e, id, count)}
