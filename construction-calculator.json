@@ -98,7 +98,7 @@
     },
     {
       "name": "Штукатурка стен",
-      "count": 30,
+      "count": 20,
       "unit": "грн/м2",
       "calculateName": "calculateWallWork",
       "id": "3"

@@ -91,7 +91,7 @@ const Settings = () => {
                                 min={minInputValue}
                                 max={maxInputValue}
                                 step='1'
-                                value={newCostOfWorks[id] === count ? '' : newCostOfWorks[id] === 0 || newCostOfWorks[id] ? newCostOfWorks[id] : ''}
+                                value={newCostOfWorks[id] === 0 || newCostOfWorks[id] ? newCostOfWorks[id] : ''}
                                 onChange={(e) => onChangeInputValue(e, id, count)}
                                 onBlur={e => onSubmitInputValue(e, id)}
                                 onKeyDown={(e) => onKeyDown(e, id, count)}
