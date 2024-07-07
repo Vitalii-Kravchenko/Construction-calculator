@@ -22,6 +22,7 @@ const roomWorksSlice = createSlice({
     initialState,
     reducers: {
         roomWorksUpdateOne: roomWorksAdapter.updateOne,
+        roomWorksUpdateMany: roomWorksAdapter.updateMany,
     },
     extraReducers: builder => {
         builder
@@ -47,4 +48,5 @@ export default reducer;
 
 export const {
     roomWorksUpdateOne,
+    roomWorksUpdateMany
 } = actions;

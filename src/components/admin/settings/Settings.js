@@ -15,6 +15,7 @@ import Notes from "../../notes/Notes";
 
 import './settings.sass';
 import Spinner from "../../spinner/Spinner";
+import {roomWorksFetchData} from "../../calculator/roomWorks/roomWorksSlice";
 
 const Settings = () => {
     const dispatch = useDispatch();

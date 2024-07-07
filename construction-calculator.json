@@ -84,7 +84,7 @@
   "operations": [
     {
       "name": "Демонтаж, зачистка старой отделки",
-      "count": 1000,
+      "count": 20,
       "unit": "грн/м2",
       "calculateName": "calculateGeneralWork",
       "id": "1"
@@ -98,7 +98,7 @@
     },
     {
       "name": "Штукатурка стен",
-      "count": 20,
+      "count": 30,
       "unit": "грн/м2",
       "calculateName": "calculateWallWork",
       "id": "3"

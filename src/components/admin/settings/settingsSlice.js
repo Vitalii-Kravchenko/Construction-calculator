@@ -1,6 +1,7 @@
 import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 
 import {useHttp} from "../../../hooks/http.hook";
+import {roomWorksUpdateMany} from "../../calculator/roomWorks/roomWorksSlice";
 
 const settingsAdapter = createEntityAdapter();
 
@@ -15,7 +16,7 @@ export const settingsFetchData = createAsyncThunk(
 
 export const settingsSendData = createAsyncThunk(
     'settings/sendSettings',
-    async (data) => {
+    async (data, {dispatch}) => {
         const {request} = useHttp();
 
         const itemsArray = Array.isArray(data) ? data : Object.entries(data);
@@ -24,8 +25,19 @@ export const settingsSendData = createAsyncThunk(
             return request(`/operations/${item[0]}`, 'PATCH', {count: item[1]})
         });
 
+        const updateData = () => {
+            return Promise.all(updatePromises)
+                .then(() => {
+                    const arrayWithNewCosts = itemsArray.map(item => {
+                        return {id: item[0], changes: {count: item[1]}}
+                    })
+
+                    dispatch(roomWorksUpdateMany(arrayWithNewCosts));
+                })
+        };
+
         try {
-            return await Promise.all(updatePromises);
+            return await updateData()
         } catch (error) {
             console.error('Error:', error);
         }
@@ -67,7 +79,8 @@ const settingsSlice = createSlice({
             .addCase(settingsSendData.rejected, state => {
                 state.settingsLoadingStatus = 'error';
             })
-            .addDefaultCase(() => {});
+            .addDefaultCase(() => {
+            });
     }
 })
 

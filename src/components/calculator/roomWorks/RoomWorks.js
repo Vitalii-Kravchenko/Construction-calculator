@@ -24,7 +24,7 @@ const RoomWorks = () => {
         if (roomWorksItems.length === 0) {
             dispatch(roomWorksFetchData());
         }
-    }, []);
+    }, [roomWorksItems]);
 
     const workCalculate = (e, calculateName, count, id) => {
         const checked = e.target.checked;
