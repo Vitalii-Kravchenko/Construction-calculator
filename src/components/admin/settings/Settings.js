@@ -7,7 +7,7 @@ import {setLoginStatus} from "../login/loginSlice";
 import {
     settingsFetchData,
     settingsSendData,
-    setNewItemsCount,
+    setNewCostOfWork,
     selectAll,
 } from "./settingsSlice";
 
@@ -37,12 +37,12 @@ const Settings = () => {
     const onChangeInputValue = (e, id) => {
         const count = e.target.value;
 
-        dispatch(setNewItemsCount({[id]: parseFloat(count)}));
+        dispatch(setNewCostOfWork({[id]: parseFloat(count)}));
     }
 
     const onSubmitInputValue = (e, id, oldCount) => {
         if (newCostOfWorks[id] < minInputValue || newCostOfWorks[id] > maxInputValue) {
-            dispatch(setNewItemsCount({[id]: oldCount}));
+            dispatch(setNewCostOfWork({[id]: oldCount}));
         } else {
             dispatch(settingsSendData(newCostOfWorks));
         }

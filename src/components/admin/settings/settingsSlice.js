@@ -42,7 +42,7 @@ const settingsSlice = createSlice({
     initialState,
     reducers: {
         settingsUpdateOne: settingsAdapter.updateOne,
-        setNewItemsCount: (state, action) => {
+        setNewCostOfWork: (state, action) => {
             state.newCostOfWorks = {...state.newCostOfWorks, ...action.payload};
         }
     },
@@ -75,6 +75,6 @@ export const {selectAll} = settingsAdapter.getSelectors(state => state.settings)
 
 const {reducer, actions} = settingsSlice;
 
-export const {setNewItemsCount} = actions;
+export const {setNewCostOfWork} = actions;
 
 export default reducer;
